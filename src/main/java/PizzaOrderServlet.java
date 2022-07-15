@@ -8,6 +8,11 @@ import java.io.IOException;
 @WebServlet(name = "PizzaOrderServlet", urlPatterns = "/pizza-order")
 public class PizzaOrderServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.getWriter().println("<h1>Welcome to Pizza World!</h1>");
+        resp.setContentType("text/html");
+        req.getRequestDispatcher("/pizza-order").forward(req, resp);
+    }
+
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+        resp.sendRedirect("/pizza-order");
     }
 }
